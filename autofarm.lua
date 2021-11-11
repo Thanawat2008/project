@@ -276,6 +276,7 @@ spawn(function()
 end)
 
 while _G.AutoFarm do wait()
+    pcall(function()
         AC()
         CQ()
         MOBS()
@@ -283,4 +284,5 @@ while _G.AutoFarm do wait()
         ABS()
         ATQ()
         ATEQ()
+    end)
 end
