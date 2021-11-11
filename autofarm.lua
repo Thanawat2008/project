@@ -206,6 +206,8 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
                     for i, v in pairs(M) do
                         if e.Name == Mob then
                             if v.Name == Mob then
+                                e.Humanoid.WalkSpeed = 1
+                                v.Humanoid.WalkSpeed = 1
                                 e.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                 sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
                                 e.HumanoidRootPart.Size = Vector3.new(50,50,50)
@@ -225,6 +227,7 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     if game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
             for ii, vv in pairs(M2) do
                 if vv.Name == Mob then
+                    vv.Humanoid.WalkSpeed = 1
                     TP(vv.HumanoidRootPart.Position,vv.HumanoidRootPart.CFrame)
                 end
             end
