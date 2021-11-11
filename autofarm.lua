@@ -213,6 +213,9 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
                                 e.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                 e.HumanoidRootPart.CanCollide = false
                                 TP(v.HumanoidRootPart.Position, v.HumanoidRootPart.CFrame * CFrame.new(0,25,10))
+                                    if v.Humanoid.Health == 0 then
+                                         TP(posQuest, lctQuest)
+                                    end
                             end
                         end
                     end
@@ -229,6 +232,9 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
                 if vv.Name == Mob then
                     vv.Humanoid.WalkSpeed = 1
                     TP(vv.HumanoidRootPart.Position,vv.HumanoidRootPart.CFrame)
+                        if vv.Humanoid.Health == 0 then
+                            TP(posQuest, lctQuest)
+                        end
                 end
             end
     end
