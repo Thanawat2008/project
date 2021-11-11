@@ -105,6 +105,7 @@ function CQ()
             lctQuest = CFrame.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
         elseif lv == 175 or lv <= 224 then
             Mob = "Dark Master [Lv. 175]"
+            Quest = "SkyQuest"
             LvQuest = 2
             S = "StartQuest"
             posQuest = Vector3.new(-4841.83447, 717.669617, -2623.96436, -0.875942111, 5.59710216e-08, -0.482416272, 3.04023082e-08, 1, 6.08195947e-08, 0.482416272, 3.86078725e-08, -0.875942111)
@@ -185,9 +186,9 @@ end
 
 function TP(P1,P2)
     local Distance = (P1 - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    if Distance < 300 then
+    if Distance < 250 then
         Speed = 25000
-    elseif Distance >= 300 then
+    elseif Distance >= 250 then
         Speed = 250
     end
     game:GetService("TweenService"):Create(
@@ -205,8 +206,6 @@ game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
                     for i, v in pairs(M) do
                         if e.Name == Mob then
                             if v.Name == Mob then
-                                e.Humanoid.WalkSpeed = 1
-                                v.Humanoid.WalkSpeed = 1
                                 e.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                 sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
                                 e.HumanoidRootPart.Size = Vector3.new(50,50,50)
@@ -247,16 +246,16 @@ function ATQ()
 CQ()
     local q = game.Players.LocalPlayer.PlayerGui.Main.Quest
         if q.Visible == false then
-            TP(posQuest,lctQuest)
-                if game.Players.LocalPlayer.Character.HumanoidRootPart.Position == posQuest then
-                        wait(.5)
+                TP(posQuest, lctQuest)
+                    if game.Players.LocalPlayer.Character.HumanoidRootPart.Position == posQuest then
+                        wait(0.5)
                             local qu = {
                                 [1] = S,
                                 [2] = Quest,
-                                [3] = LvQuest,
+                                [3] = LvQuest
                             }
                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(qu))
-                end
+                    end
         end
 end
 
@@ -274,7 +273,6 @@ spawn(function()
 end)
 
 while _G.AutoFarm do wait()
-    pcall(function()
         AC()
         CQ()
         MOBS()
@@ -282,5 +280,4 @@ while _G.AutoFarm do wait()
         ABS()
         ATQ()
         ATEQ()
-    end)
 end
