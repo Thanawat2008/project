@@ -189,7 +189,7 @@ function TP(P1,P2)
     if Distance < 250 then
         Speed = 25000
     elseif Distance >= 250 then
-        Speed = 350
+        Speed = 300
     end
     game:GetService("TweenService"):Create(
         game.Players.LocalPlayer.Character.HumanoidRootPart,
